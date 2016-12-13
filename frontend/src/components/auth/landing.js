@@ -10,6 +10,9 @@ import Login from './login'
 import Registration from './registration'
 
 
+
+
+
 export const Landing = () => (
     <div className = "row">
         <div className = "text-center col-md-4">
@@ -19,6 +22,7 @@ export const Landing = () => (
             <Login></Login>
         </div>
 
+
     </div>
 )
 
@@ -26,3 +30,4 @@ export default Landing
 
 
 
+// <input type="file" accept="image/*" onChange={(e) => handleImageChange(e)}/>

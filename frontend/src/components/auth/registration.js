@@ -14,7 +14,7 @@ export const Registration = ({register}) => {
     return (
         <div>
             <h1>Register</h1>
-            <form>
+            <form action="#">
                 <p>Username</p>
                 <input ref={node => username = node} />
 

@@ -2,10 +2,10 @@
 var mongoose = require('mongoose')
 require('./db.js')
 
-var postsSchema = new mongoose.Schema({
+var postSchema = new mongoose.Schema({
 	id: Number,
 	author: String,
-	body: String,
+	text: String,
 	date: Date,
 	img: String,
 	comments: [{
@@ -39,7 +39,7 @@ var userSchema = new mongoose.Schema({
 
 exports.User = mongoose.model('users', userSchema)
 exports.Profile = mongoose.model('profile', profileSchema)
-exports.Posts = mongoose.model('articles', postsSchema)
+exports.Post = mongoose.model('articles', postSchema)
 
 
 //following
