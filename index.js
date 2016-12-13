@@ -26,6 +26,8 @@ app.use(enableCORS);
 require('./auth.js')(app)
 require('./profile.js')(app)
 require('./articles.js')(app)
+require('./uploadCloudinary.js').setup(app)
+
 //following
 
 

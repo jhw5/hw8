@@ -21,8 +21,6 @@ export const Landing = () => (
         <div className = "text-center col-md-4">
             <Login></Login>
         </div>
-
-
     </div>
 )
 

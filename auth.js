@@ -23,7 +23,7 @@ const generateCode = function() {
 
 
 const isLoggedIn = function(req, res, next) {
-
+    
     var foo = req.cookies[cookieKey];
     if (foo) {
         redis.get(foo, function(err, item) {
@@ -83,6 +83,7 @@ module.exports = app => {
 
         })
     })
+    
 
 
 }

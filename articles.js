@@ -3,6 +3,7 @@
  */
 
 const Post = require('./model.js').Post;
+const Profile = require('./model.js').Profile
 // const Auth = require('./auth.js');
 
 
@@ -33,7 +34,22 @@ const Post = require('./model.js').Post;
 const getArticle = (req, res) => {
 
     Post.find({}, function (err, items) {
-        res.send({'articles':items})
+
+        Profile.find({username:req.username}).exec(function(err, item) {
+            const followList = item[0].following
+            console.log("item[0]: " + "\n" + + item[0])
+            console.log("item[0].followers: " + "\n" + + item[0].following)
+
+            const articleList = items.filter(x => followList.indexOf(x.author) >= 0 || x.author == req.username)
+            console.log("articleList: " + "\n" + articleList )
+            const orderedList = articleList.sort((x, y) => {
+                return new Date(x.date) - new Date(y.date)
+            })
+            console.log("ordered List" + "\n" + orderedList)
+
+            res.send({'articles':orderedList.reverse().splice(0, 10)})
+
+        })
     })
 
 }
@@ -83,7 +99,7 @@ const putArticle = (req, res) => {
             console.log(payload)
             console.log(commentList.push(payload))
             console.log("commentList:" +"\n"+ commentList)
-            
+
             const newPost = new Post({author:req.username, text: items[0].text, date: new Date(), img:"NA", comments:payload})
 
 
