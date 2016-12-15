@@ -6,6 +6,9 @@ const express = require('express');
 // const app = express();
 const Profile = require('./model.js').Profile;
 
+const uploadImage = require('./uploadCloudinary').uploadImage
+
+
 const getDOB = (req, res) => {
     Profile.find({username: req.username}).exec(function(err, items) {
         res.send({"username": items[0].useranem, "dob": items[0].dob})
@@ -21,10 +24,9 @@ const getAvatar = (req, res) => {
 }
 
 const putAvatar = (req, res) => {
-    const users = req.username
-    Profile.update({username:users}, {$set: {picture: req.body.avatar}}).exec(function(err, items) {
-        Profile.find({username: users}).exec( function(err, items) {
-            res.send({"username": items[0].username, "avatar": items[0].picture})
+    Profile.update({username:req.username}, {$set: {picture: req.fileurl}}).exec(function(err, items) {
+        Profile.find({username: req.username}).exec( function(err, items) {
+            res.send({"username": req.username, "avatar": req.fileurl})
         })
     })
 }
@@ -158,7 +160,7 @@ module.exports = app => {
     app.get('/dob', getDOB)
 
     app.get('/avatars/:user?', getAvatar)
-    app.put('/avatar', putAvatar)
+    app.put('/avatar', uploadImage('avatar'),putAvatar)
 
     app.get('/following/:user?', getFollowing)
     app.put('/following/:user', putFollowing)

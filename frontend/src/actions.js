@@ -3,7 +3,9 @@
  */
 
 // export const url =  'https://webdev-dummy.herokuapp.com';
-export const url =  'http://localhost:3000';
+export const url =  'https://glambition.herokuapp.com/';
+
+// export const url =  'http://localhost:3000';
 
 
 const Action = {
@@ -267,11 +269,22 @@ export function registration(username, email, zipcode, password, passwordC) {
 export function uploadAvatar(pic) {
     return (dispatch) => {
         if (pic) {
+            console.log("this is the pic" + pic.target.files[0])
             const formData = new FormData()
-            formData.append('avatar', pic)
-            resource('PUT', 'avatar', formData, false).then(r => {
-                dispatch({type : Action.UPDATE_PROFILE, avatar: r.avatar})
-            })
+            formData.append('image', pic.target.files[0])
+            const KEYS = formData.get('image').toString()
+            console.log('this is formData.get(image): ' + KEYS)
+            for (var value of formData.values()) {
+                console.log(value);
+            }
+
+            const endpoint = 'avatar'
+            fetch(`${url}/${endpoint}`, {credentials: 'include', method : 'PUT', body : formData})
+
+
+            // resource('PUT', 'avatar', formData, false).then(r => {
+            //     dispatch({type : Action.UPDATE_PROFILE, avatar: r.avatar})
+            // })
         }
     }
 }

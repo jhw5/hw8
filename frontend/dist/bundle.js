@@ -24074,6 +24074,8 @@
 	 */
 	
 	var url = exports.url = 'https://webdev-dummy.herokuapp.com';
+	// export const url =  'http://localhost:3000';
+	
 	
 	var Action = {
 	    NAV_PROFILE: 'NAV_PROFILE',
@@ -24090,6 +24092,8 @@
 	
 	
 	var resource = function resource(method, endpoint, payload) {
+	    console.log("THE ENDPOINT: " + endpoint + "\n" + "THE PAYLOAD: " + payload + "\n" + "THE METHOD: " + method);
+	
 	    var options = {
 	        method: method,
 	        credentials: 'include',
@@ -24099,6 +24103,7 @@
 	    };
 	    if (payload) options.body = JSON.stringify(payload);
 	
+	    console.log('The options for ', endpoint, options);
 	    return fetch(url + '/' + endpoint, options).then(function (r) {
 	        if (r.status === 200) {
 	            return r.headers.get('Content-Type').indexOf('json') > 0 ? r.json() : r.text();
@@ -24107,6 +24112,8 @@
 	            console.error(method + ' ' + endpoint + ' ' + r.statusText);
 	            throw new Error(r.statusText);
 	        }
+	    }).catch(function (err) {
+	        return console.error(err);
 	    });
 	};
 	
@@ -24140,7 +24147,7 @@
 	        dispatch(update_values('zipcode', zipcode));
 	        dispatch(update_values('email', email));
 	        dispatch(update_values('password', password));
-	        dispatch(update_values('passconf', passconf));
+	        // dispatch (update_values('passconf', passconf))
 	    };
 	}
 	function update_headline(headline) {
@@ -24318,21 +24325,17 @@
 	    };
 	}
 	
-	function registration(_ref3) {
-	    var username = _ref3.username;
-	    var email = _ref3.email;
-	    var zipcode = _ref3.zipcode;
-	    var password = _ref3.password;
-	    var passwordC = _ref3.passwordC;
-	
+	function registration(username, email, zipcode, password, passwordC) {
 	    return function (dispatch) {
-	        var message = validation(username, email, zipcode, password, passwordC);
+	        var message = '';
+	        // validation(username, email, zipcode, password, passwordC)
 	        if (message.length != 0) {
 	            return "registration fail";
 	        } else {
 	            var payload = { username: username, email: email, zipcode: zipcode, password: password, passwordC: passwordC };
 	            resource('POST', 'register', payload).then(function (r) {
-	                return dispatch({});
+	                console.log('register response', r);
+	                // return dispatch({})
 	            });
 	        }
 	    };
@@ -24342,7 +24345,10 @@
 	    return function (dispatch) {
 	        if (pic) {
 	            var formData = new FormData();
-	            formData.append('avatar', pic);
+	
+	            formData.append('image', pic);
+	            console.log(formData);
+	            console.log(formData.toString());
 	            resource('PUT', 'avatar', formData, false).then(function (r) {
 	                dispatch({ type: Action.UPDATE_PROFILE, avatar: r.avatar });
 	            });
@@ -24470,6 +24476,8 @@
 	};
 	
 	exports.default = Landing;
+	
+	// <input type="file" accept="image/*" onChange={(e) => handleImageChange(e)}/>
 
 /***/ },
 /* 207 */
@@ -24585,7 +24593,7 @@
 	        ),
 	        _React2.default.createElement(
 	            'form',
-	            null,
+	            { action: '#' },
 	            _React2.default.createElement(
 	                'p',
 	                null,

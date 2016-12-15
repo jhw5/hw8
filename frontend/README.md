@@ -3,7 +3,7 @@ COMP431/531 Starter
 knowing-group.surge.sh
 
 {
-     "netid": "sep1",
-  "frontend": "lean-chain.surge.sh",
-   "backend": "https://jhw5.herokuapp.com/articles"
+     "netid": "jhw5",
+  "frontend": "stingy-tendency.surge.sh",
+   "backend": "https://glambition.herokuapp.com/"
 }

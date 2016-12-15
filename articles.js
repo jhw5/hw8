@@ -23,8 +23,7 @@ const Profile = require('./model.js').Profile
 // const putHeadline = (req, res) => {
 //
 //     Profile.update({username:req.username}, {$set: {status: req.body.headline}}).exec(function(err, items) {
-//         Profile.find({username: req.username}).exec(function(err, item) {
-//             res.send({"username": item[0].username, "headline": item[0].status})
+//         Profile.find({username: req.usernameername, "headline": item[0].status})
 //         })
 //     })
 // }
@@ -37,15 +36,11 @@ const getArticle = (req, res) => {
 
         Profile.find({username:req.username}).exec(function(err, item) {
             const followList = item[0].following
-            console.log("item[0]: " + "\n" + + item[0])
-            console.log("item[0].followers: " + "\n" + + item[0].following)
 
             const articleList = items.filter(x => followList.indexOf(x.author) >= 0 || x.author == req.username)
-            console.log("articleList: " + "\n" + articleList )
             const orderedList = articleList.sort((x, y) => {
                 return new Date(x.date) - new Date(y.date)
             })
-            console.log("ordered List" + "\n" + orderedList)
 
             res.send({'articles':orderedList.reverse().splice(0, 10)})
 

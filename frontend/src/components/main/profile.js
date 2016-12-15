@@ -19,7 +19,9 @@ export const Prof = ({update_head, headline, avatar, update_Avatar}) => {
     }
     return (
         <div>
-            <img src={avatar} />
+            <div className="container col-md-3">
+                <img src={avatar} class="img-responsive" width="160px"/>
+            </div>
             <input type="file" accept="image/*" onChange={(e) =>update_Avatar(e)} />
 
             <p>{headline}</p>
