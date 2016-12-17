@@ -5,8 +5,8 @@
 // export const url =  'https://webdev-dummy.herokuapp.com';
 // export const url =  'https://glambition.herokuapp.com/';
 
-export const url =  'http://localhost:3000';
-// export const url =  'https://glambition.herokuapp.com/';
+// export const url =  'http://localhost:3000';
+export const url =  'https://glambition.herokuapp.com/';
 
 // export const url =  'http://localhost:3000';
 
@@ -26,19 +26,19 @@ export default Action
 
 const resource = (method, endpoint, payload) => {
     console.log("THE ENDPOINT: " + endpoint + "\n" + "THE PAYLOAD: " + payload + "\n" + "THE METHOD: " + method)
-    let options;
-    if (endpoint == "avatar") {
-        options = {body: payload}
-    } else {
-        options =  {
-            method,
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-        if (payload) options.body = JSON.stringify(payload)
-    }
+    // let options;
+    // if (endpoint == "avatar") {
+    //     options = {body: payload}
+    // } else {
+    //     options =  {
+    //         method,
+    //         credentials: 'include',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     }
+    //     if (payload) options.body = JSON.stringify(payload)
+    // }
     // const options =  {
     //     method,
     //     credentials: 'include',
@@ -297,11 +297,8 @@ export function uploadAvatar(pic) {
             console.log("this is the pic" + pic.target.files[0])
             const formData = new FormData()
             formData.append('image', pic.target.files[0])
-            formData.append('text', 'sample text')
-            formData.append('image', pic)
             const KEYS = formData.get('image').toString()
             
-            const KEYS = formData.get('image').toString()
             console.log('this is formData.get(image): ' + KEYS)
             for (var value of formData.values()) {
                 console.log(value);
