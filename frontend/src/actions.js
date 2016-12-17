@@ -6,6 +6,9 @@
 // export const url =  'https://glambition.herokuapp.com/';
 
 export const url =  'http://localhost:3000';
+// export const url =  'https://glambition.herokuapp.com/';
+
+// export const url =  'http://localhost:3000';
 
 
 const Action = {
@@ -44,6 +47,14 @@ const resource = (method, endpoint, payload) => {
     //     }
     // }
     // if (payload) options.body = JSON.stringify(payload)
+    const options =  {
+        method,
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    if (payload) options.body = JSON.stringify(payload)
 
     console.log('The options for ', endpoint, options)
     return fetch(`${url}/${endpoint}`, options)
@@ -290,6 +301,12 @@ export function uploadAvatar(pic) {
             formData.append('image', pic)
             const KEYS = formData.get('image').toString()
             
+            const KEYS = formData.get('image').toString()
+            console.log('this is formData.get(image): ' + KEYS)
+            for (var value of formData.values()) {
+                console.log(value);
+            }
+
             const endpoint = 'avatar'
             fetch(`${url}/${endpoint}`, {credentials: 'include', method : 'PUT', body : formData})
 
