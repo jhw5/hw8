@@ -106,7 +106,9 @@ echo ""
 
 curl  -H 'Content-Type: application/json' http://localhost:3000/register -d "{ \"username\":\"jh\", \"password\":\"jh\" }"
 
+curl  -H 'Content-Type: application/json' glambition.herokuapp.com/register -d "{ \"username\":\"jh\", \"password\":\"jh\" }"
 
+curl  -H 'Content-Type: application/json' glambition.herokuapp.com/login -d "{ \"username\":\"mia\", \"password\":\"mia\" }"
 
 
 
