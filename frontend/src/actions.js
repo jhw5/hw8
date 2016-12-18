@@ -6,7 +6,7 @@
 // export const url =  'https://glambition.herokuapp.com/';
 
 // export const url =  'http://localhost:3000';
-export const url =  'https://glambition.herokuapp.com/';
+export const url =  'https://glambition.herokuapp.com';
 
 // export const url =  'http://localhost:3000';
 

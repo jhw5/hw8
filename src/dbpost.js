@@ -29,7 +29,8 @@ function findByAuthor(author, callback) {
 
 new Article({ id: 1, author: 'sep1', img: null, date: new Date().getTime(), text: 'This is my first article'}).save()
 new Article({ id: 2, author: 'sep1', img: null, date: new Date().getTime(), text: 'This is my second article'}).save()
-new Article({ id: 3, author: 'jmg3', img: null, date: new Date().getTime(), text: "This is Max's article"}).save(function() {
+new Article({ id: 3, author: 'jmg3', img: null, date: new Date().getTime(),
+    text: "This is Max's article"}).save(function() {
     console.log('done with save')
     Article.find().exec(function(err, items) {
         console.log("There are " + items.length + " articles total in db")

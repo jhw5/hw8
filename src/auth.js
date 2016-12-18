@@ -5,7 +5,8 @@ const express = require('express');
 const md5 = require('md5')
 const app = express();
 // var models = require('./model.js')
-var redis = require('redis').createClient('redis://h:p90rtsojkpfo4rf8phsgkg2e61g@ec2-54-221-221-220.compute-1.amazonaws.com:11619')
+var redis = require('redis')
+    .createClient('redis://h:p90rtsojkpfo4rf8phsgkg2e61g@ec2-54-221-221-220.compute-1.amazonaws.com:11619')
 const User = require('./model.js').User;
 const Profile = require('./model.js').Profile;
 
