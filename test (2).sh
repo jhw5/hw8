@@ -98,13 +98,13 @@ curl -X PUT 'Content-Type: application/json' http://localhost:${PORT}/logout
 echo ""
 
 echo "POST /register"
-curl  -H 'Content-Type: application/json' http://localhost:3000/register -d "{ \"username\":\"jhw5\", \"password\":\"jhw5\" }"
 echo ""
 
 
 
 
 
+curl  -H 'Content-Type: application/json' http://localhost:3000/register -d "{ \"username\":\"jh\", \"password\":\"jh\" }"
 
 
 
