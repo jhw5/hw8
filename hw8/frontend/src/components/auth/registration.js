@@ -31,7 +31,10 @@ export const Registration = ({register}) => {
                 <input ref={node => passwordC = node} />
 
                 <div>
-                    <button onClick={ () => {register(username.value, email.value, zipcode.value, password.value, passwordC.value)}} >Register</button>
+                    <button onClick={
+                    () => {register(username.value, email.value, zipcode.value, password.value, passwordC.value)}} >
+                        Register
+                    </button>
                 </div>
             </form>
         </div>
@@ -42,7 +45,9 @@ export default connect(
     null,
     (dispatch) => {
         return {
-            register: (username, email, zipcode, password, passwordC) => dispatch(registration(username, email, zipcode, password, passwordC))
+            register:
+                (username, email, zipcode, password, passwordC) =>
+                    dispatch(registration(username, email, zipcode, password, passwordC))
         }
     }
 ) (Registration)

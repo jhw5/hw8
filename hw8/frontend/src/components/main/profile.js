@@ -51,7 +51,8 @@ export const Followers = ({followers, unfollow}) => {
         </div>
     )
 }
-export const Profile = ({update_head, headline, avatar, followers, username, update_Avatar, unfollow, add_follower }) => {
+export const Profile = (
+    {update_head, headline, avatar, followers, username, update_Avatar, unfollow, add_follower }) => {
     let something;
     return (
         <div>

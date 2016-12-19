@@ -17,7 +17,9 @@ export const Articles = ({articles, add_comment, edit_comment, edit_articles, us
             return (
                 <div>
                     <input placeholder="Edit this comment..." type="text" ref={(node) => update=node} />
-                    <button onClick={() => edit_comment(x_id, {text:update.value, commentId:commentId})}> Edit comment </button>
+                    <button onClick={() => edit_comment(x_id, {text:update.value, commentId:commentId})}> 
+                        Edit comment 
+                    </button>
                 </div>
             )
         }
@@ -34,7 +36,7 @@ export const Articles = ({articles, add_comment, edit_comment, edit_articles, us
         )
     }
     const _editArticle = (x_id, author) => {
-        const booleanValue = (username === author) ? true : false;
+        const booleanValue = (username === author);
         let edit_post;
         if (booleanValue) {
             return (

@@ -23,7 +23,8 @@ const Login = ({dispatch}) => {
                 <input ref={(data) => {password = data}}></input>
             </div>
             <div>
-                <input type="button" onClick={() => {dispatch(local_login(username.value, password.value))}} value="LOGIN"/>
+                <input type="button" 
+                       onClick={() => {dispatch(local_login(username.value, password.value))}} value="LOGIN"/>
             </div>
         </div>
     )

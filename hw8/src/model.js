@@ -9,16 +9,17 @@ var postSchema = new mongoose.Schema({
 	date: Date,
 	img: String,
 	comments: [{
-		commentId: Number,
+		commentId: String,
 		author: String,
 		body: String,
-		date: Date
+		date: Date,
+		text: String
 	}]
 })
 
 var profileSchema = new mongoose.Schema({
 	username: String,
-	status: String,
+	status: Number,
 	following: [ String ],
 	email: String,
 	zipcode: String,

@@ -62,7 +62,7 @@ const postArticle = (req, res) => {
 }
 
 const generateCode = function() {
-    return Math.random().toString(20).substring(5, 9) + new Date();
+    return  Math.ceil(new Date().getTime()*100/Math.pi);
 }
 
 
@@ -74,6 +74,7 @@ const putArticle = (req, res) => {
 
     console.log("Article ID: " + id)
     console.log("commentId: " + commentId)
+    console.log("req.body: " + req.body)
     // Profile.update({username:users}, {$set: {picture: req.body.avatar}}).exec(function(err, items) {
     //     Profile.find({username: users}).exec( function(err, items) {
     //         res.send({"username": items[0].username, "avatar": items[0].picture})
@@ -84,20 +85,11 @@ const putArticle = (req, res) => {
     if (commentId == -1) {
         //add a comment
         Post.find({_id: id}, function(err, items) {
-            console.log("find items: " +"\n"+ items)
-            console.log("comments: " + "\n" + items[0].comments)
+
             const commentId = generateCode()
-            const payload = {commentId: commentId, author: req.username, date: new Date(), text: req.body.text}
-
+            const payload = {"commentId": commentId, "author": req.username, "date": new Date(), "text": req.body.text}
             const commentList = items[0].comments
-            console.log(items[0].author)
-            console.log(payload)
-            console.log(commentList.push(payload))
-            console.log("commentList:" +"\n"+ commentList)
-
-            const newPost = new Post({author:req.username, text: items[0].text, date: new Date(), img:"NA", comments:payload})
-
-
+            commentList.push({"commentId": commentId, "author": req.username, "date": new Date(), "text": req.body.text})
             Post.update({_id: id}, {$set: {comments: commentList}}).exec(function(err, item) {
                 console.log("Update items: " +"\n"+ item)
                 res.send({"articles": items})
@@ -106,13 +98,28 @@ const putArticle = (req, res) => {
 
     } else if (commentId > 0) {
         //changing a comment
+        Post.find({_id: id}, function(err, items) {
+            const commentList = items[0].comments
+            // const comment = commentList.filter(x => x.commentId == x.commentId)
+            commentList.map(x => (x.commentId == commentId) ? x.text = req.body.text : x)
+            console.log("params: " + req.params)
+            console.log("comments: " + items[0].comments)
+
+            Post.update({_id: id}, {$set: {comments: commentList}}).exec(function(err, item) {
+                res.send({"articles": items[0]})
+            })
+
+        })
     } else {
         //changing a Post
         console.log("We are changing a Post")
+
         console.log("req.body.text: " + req.body.text)
 
         Post.find({_id: id}, function(err, item) {
-            console.log("Req body: " + req.body.text)
+
+            console.log("post text: " + item[0].text)
+
             Post.update({_id: id}, {$set: {text: req.body.text}}).exec(function (err, items) {
                 res.send({"articles": item[0]})
             })
