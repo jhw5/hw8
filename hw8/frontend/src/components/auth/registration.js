@@ -7,6 +7,17 @@ import { registration } from '../../actions'
 
 
 
+export const SubmitForm = ({register}) => {
+    return (
+        <div>
+            <button onClick={
+                    () => {register(username.value, email.value, zipcode.value, password.value, passwordC.value)}
+                    }>
+                Register
+            </button>
+        </div>
+    )
+}
 
 
 export const Registration = ({register}) => {
@@ -31,11 +42,12 @@ export const Registration = ({register}) => {
                 <input ref={node => passwordC = node} />
 
                 <div>
-                    <button onClick={
-                    () => {register(username.value, email.value, zipcode.value, password.value, passwordC.value)}} >
+                    <button onClick= { () =>
+                    {register(username.value, email.value, zipcode.value, password.value, passwordC.value)}}>
                         Register
                     </button>
                 </div>
+
             </form>
         </div>
     )
@@ -52,3 +64,17 @@ export default connect(
     }
 ) (Registration)
 
+// <input type="button" value="Update" onClick={ () => {
+//     const payload = {
+//         email : this.newEmail.value == this.props.oldEmail ? '' : this.newEmail.value,
+//         zipcode : this.newZip.value == this.props.oldZip ? '' : this.newZip.value,
+//         password : this.newPassword.value == this.props.oldPassword ? '' : this.newPassword.value,
+//         passconf : this.newPassconf.value == this.props.oldPasswordconf ? '' : this.newPassconf.value
+//     }
+//     this.props.dispatch(update_profile(payload))
+//     this.newEmail.value = null
+//     this.newZip.value = null
+//     this.newPassword.value = null
+//     this.newPassconf.value = null
+//
+// }} />

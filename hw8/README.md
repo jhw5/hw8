@@ -3,7 +3,7 @@ COMP431/531 Starter
 
 {
      "netid": "jhw5",
-  "frontend": "paltry-sleet.surge.sh",
+  "frontend": "gleaming-faucet.surge.sh",
    "backend": "https://glambition.herokuapp.com/"
 }
 

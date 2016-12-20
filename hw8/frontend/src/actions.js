@@ -3,10 +3,10 @@
  */
 
 // export const url =  'https://webdev-dummy.herokuapp.com';
-// export const url =  'https://glambition.herokuapp.com/';
+export const url =  'https://glambition.herokuapp.com/';
 
 // export const url =  'http://localhost:3000';
-export const url =  'https://glambition.herokuapp.com';
+// export const url =  'https://glambition.herokuapp.com';
 
 // export const url =  'http://localhost:3000';
 
@@ -276,9 +276,9 @@ export function validation({username, email, zipcode, password, passwordC}) {
 
 export function registration(username, email, zipcode, password, passwordC) {
     return (dispatch) => {
-        const message = ''
-            // validation(username, email, zipcode, password, passwordC)
+        const message = validation(username, email, zipcode, password, passwordC)
         if (message.length != 0) {
+
             return "registration fail"
         } else{
             const payload = {username, email, zipcode, password, passwordC}
