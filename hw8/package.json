@@ -2,9 +2,7 @@
   "name": "RiceBookServer",
   "private": true,
   "version": "0.0.0",
-  "description": "Demo RiceBookServer",
   "license": "MIT",
-  "repository": "https://github.com/skotep/webdev",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.15.2",
