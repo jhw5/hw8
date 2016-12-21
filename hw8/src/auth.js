@@ -60,12 +60,25 @@ module.exports = app => {
     app.post('/register', function(req, res){
         const salt = generateCode();
 
-        new Profile({username: req.body.username, status: "my first status",email: req.body.email, dob: req.body.dob || new Date(),
-            zipcode: req.body.zipcode, password: req.body.password, picture: "NA"}).save()
+        new Profile({
+            username: req.body.username, 
+            status: "my first status", 
+            following:[],
+            email: req.body.email, 
+            dob: req.body.dob || new Date(),
+            zipcode: req.body.zipcode, 
+            password: req.body.password, 
+            picture: "NA"}).save()
+        console.log('INSIDE!!')
         new User({username: req.body.username, salt:salt, hash:md5(req.body.password + salt)}).save()
         res.send({something:"registration works"})
 
-
+            // username: String,
+            // status: Number,
+            // following: [ String ],
+            // email: String,
+            // zipcode: String,
+            // picture: String
     });
 
     app.use(isLoggedIn);

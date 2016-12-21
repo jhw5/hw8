@@ -3,8 +3,8 @@ COMP431/531 Starter
 
 {
      "netid": "jhw5",
-  "frontend": "gleaming-faucet.surge.sh",
-   "backend": "https://glambition.herokuapp.com/"
+  "frontend": "vagabond-teaching.surge.sh",
+   "backend": "https://glambition.herokuapp.com"
 }
 
 accounts:

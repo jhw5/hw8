@@ -4,6 +4,6 @@ knowing-group.surge.sh
 
 {
      "netid": "jhw5",
-  "frontend": "stingy-tendency.surge.sh",
-   "backend": "https://glambition.herokuapp.com/"
+  "frontend": "vagabond-teaching.surge.sh",
+   "backend": "https://glambition.herokuapp.com"
 }

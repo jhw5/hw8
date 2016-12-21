@@ -19,7 +19,7 @@ var postSchema = new mongoose.Schema({
 
 var profileSchema = new mongoose.Schema({
 	username: String,
-	status: Number,
+	status: String,
 	following: [ String ],
 	email: String,
 	zipcode: String,

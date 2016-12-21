@@ -7,17 +7,6 @@ import { registration } from '../../actions'
 
 
 
-export const SubmitForm = ({register}) => {
-    return (
-        <div>
-            <button onClick={
-                    () => {register(username.value, email.value, zipcode.value, password.value, passwordC.value)}
-                    }>
-                Register
-            </button>
-        </div>
-    )
-}
 
 
 export const Registration = ({register}) => {
@@ -42,8 +31,7 @@ export const Registration = ({register}) => {
                 <input ref={node => passwordC = node} />
 
                 <div>
-                    <button onClick= { () =>
-                    {register(username.value, email.value, zipcode.value, password.value, passwordC.value)}}>
+                    <button onClick= { () => {register(username.value, email.value, zipcode.value, password.value, passwordC.value)}}>
                         Register
                     </button>
                 </div>

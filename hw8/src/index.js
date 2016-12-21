@@ -26,8 +26,6 @@ require('./auth.js')(app)
 require('./profile.js')(app)
 require('./articles.js')(app)
 
-//following
-
 
 
 // Get the port from the environment, i.e., Heroku sets it
